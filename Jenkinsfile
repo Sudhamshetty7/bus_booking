@@ -11,6 +11,7 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 sh 'mvn clean install'
+                sh 'java -jar'
             }
         }
       stage('deploy') {
