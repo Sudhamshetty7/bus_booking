@@ -11,13 +11,13 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 sh 'mvn clean install'
-                sh 'java -jar /home/slave-1/workspace/bus-booking_develop/target/bus-booking-app-1.0-SNAPSHOT.jar'
+                sh 'java -jar /home/slave-1/workspace/bus_booking_develop/target/bus-booking-app-1.0-SNAPSHOT.jar'
                 sleep 30
             }
         } 
     stage('deploy') {
              steps {
-                 sh 'scp /home/slave-1/workspace/bus-booking_develop/target/bus-booking-app-1.0-SNAPSHOT.jar root@172.31.5.133:/opt/apache-tomcat-8.5.98/webapps/'
+                 sh 'scp /home/slave-1/workspace/bus_booking_develop/target/bus-booking-app-1.0-SNAPSHOT.jar root@172.31.5.133:/opt/apache-tomcat-8.5.98/webapps/'
 }
 } 
     }
