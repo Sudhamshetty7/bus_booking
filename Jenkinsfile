@@ -11,7 +11,14 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 sh 'mvn clean install'
+                sh' java -jar bus-booking-app-1.0-SNAPSHOT.jar'
+                sleep 30
             }
         } 
+    stage('deploy') {
+             steps {
+                 sh 'scp /home/slave-1/workspaceweather-update/_develop/target/bus-booking-app-1.0-SNAPSHOT.jar root@172.31.5.133:/opt/apache-tomcat-8.5.98/webapps/'
+}
+} 
     }
 }
