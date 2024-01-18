@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 sh 'mvn clean install'
-                sh' java -jar /home/slave-1/workspaceweather-update/_develop/target/bus-booking-app-1.0-SNAPSHOT.jar'
+                sh' java -jar /home/slave-1/workspaceweather-update_develop/target/bus-booking-app-1.0-SNAPSHOT.jar'
                 sleep 30
             }
         } 
