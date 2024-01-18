@@ -11,7 +11,7 @@ pipeline {
             steps {
                 sh 'mvn --version'
                 sh 'mvn clean install'
-                sh 'java -jar bus-booking-app-1.0-SNAPSHOT.jar'
+                sh 'java -jar /home/slave-1/workspace/bus_booking_develop/target/bus-booking-app-1.0-SNAPSHOT.jar'
             }
         }
       stage('deploy') {
