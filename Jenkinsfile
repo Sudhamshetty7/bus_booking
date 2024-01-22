@@ -1,17 +1,26 @@
-@Library('library-demo')
+@Library('library-demo') _
+
+
 pipeline {
-    agent { label 'node1' }
+    agent any
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
-                sh 'git clone https://github.com/Sudhamshetty7/bus_booking'
+                script {
+                    sh("""
+                       git clone https://github.com/Sudhamshetty7/bus_booking.git
+                       ls -ltr
+                    """)
+                }
             }
         }
-        stage('build') {
+
+        stage('Build') {
             steps {
-                build 'install'
+                script {
+                    build 'install'
+                }
             }
         }
     }
 }
-
