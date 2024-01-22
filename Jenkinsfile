@@ -1,3 +1,5 @@
+@Library('library-demo') _
+
 pipeline {
     agent { label 'node1' }
     stages {
@@ -9,24 +11,9 @@ pipeline {
         }
         stage('build') {
             steps {
-                sh 'mvn --version'
-                sh 'mvn clean install'
-                sh 'nohup timeout 10s /home/slave-1/workspace/bus_booking_develop/target/bus-booking-app-1.0-SNAPSHOT.jar > output.log 2>&1 &'
-                sleep 30
+                build 'install'
             }
-        } 
-        stage("SonarQube analysis") {
-            steps {
-                withSonarQubeEnv('sonar') {
-                    sh 'mvn clean package sonar:sonar'
-              }
-            }
-        }   
-        stage('deploy') {
-            steps {
-                 sh 'scp /home/slave-1/workspace/bus_booking_develop/target/bus-booking-app-1.0-SNAPSHOT.jar root@172.31.5.133:/opt/apache-tomcat-8.5.98/webapps/'
-}
-} 
+        }
     }
 }
 
