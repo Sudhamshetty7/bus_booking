@@ -1,5 +1,4 @@
 @Library('library-demo')
-
 pipeline {
     agent { label 'node1' }
     stages {
