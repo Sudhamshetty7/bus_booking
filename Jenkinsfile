@@ -4,11 +4,8 @@ pipeline {
         stage('Checkout') {
             steps {
                 script {
-                    sh("""
-                       rm -rf bus_booking
-                       git clone https://github.com/Sudhamshetty7/bus_booking.git
-                       ls -ltr
-                    """)
+                    sh 'rm -rf bus_booking'
+                    sh 'git clone https://github.com/Sudhamshetty7/bus_booking.git'
                 }
             }
         }
@@ -16,7 +13,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    build 'install'
+                    sh 'mvn clean install'
                 }
             }
         }
@@ -26,7 +23,7 @@ pipeline {
                 script {
                 withSonarQubeEnv('sonar') {
                 sonar()    
-              }
+            }
             }
         }
     }  
