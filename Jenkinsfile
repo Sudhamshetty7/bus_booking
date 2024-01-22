@@ -1,6 +1,3 @@
-@Library('library-demo') _
-
-
 pipeline {
     agent any
     stages {
@@ -23,5 +20,15 @@ pipeline {
                 }
             }
         }
+    
+        stage("SonarQube analysis") {
+            steps {
+                script {
+                withSonarQubeEnv('sonar') {
+                sonar()    
+              }
+            }
+        }
+    }  
     }
 }
