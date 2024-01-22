@@ -1,3 +1,5 @@
+@Library('library-demo') _
+
 pipeline {
     agent {label 'java'}
     stages {
