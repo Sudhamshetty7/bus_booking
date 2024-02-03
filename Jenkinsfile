@@ -9,7 +9,6 @@ pipeline {
                 }
             }
         }
-
         stage('Build') {
             steps {
                 script {
@@ -17,5 +16,13 @@ pipeline {
                 }
             }
         }
+		stage("SonarQube analysis") {
+            steps {
+                withSonarQubeEnv('sonar') {
+                    sh 'mvn clean package sonar:sonar'
+              }
+            }
+        }  
     }
 }
+
