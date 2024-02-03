@@ -1,12 +1,9 @@
-@Library('library-demo') _
-
 pipeline {
     agent {label 'java'}
     stages {
         stage('Checkout') {
             steps {
                 script {
-                    sh 'rm -rf bus_booking'
                     sh 'git clone https://github.com/Sudhamshetty7/bus_booking.git'
                 }
             }
@@ -19,15 +16,5 @@ pipeline {
                 }
             }
         }
-    
-        stage("SonarQube analysis") {
-            steps {
-                script {
-                withSonarQubeEnv('sonar') {
-                sonar()    
-            }
-            }
-        }
-    }  
     }
 }
