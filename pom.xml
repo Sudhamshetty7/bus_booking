@@ -53,4 +53,12 @@
         </plugins>
     </build>
 </project>
+<project xmlns="...>
+     ...
+    <properties>
+         <sonar.analysis.mode>preview</sonar.analysis.mode>
+         <sonar.issuesReport.html.enable>true</sonar.issuesReport.html.enable>
+    </properties>
+    ...
+</project>
 
